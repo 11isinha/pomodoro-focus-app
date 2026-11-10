@@ -43,8 +43,17 @@ jobs:
       - name: Gerar build React
         run: npm run build
 
-      - name: Criar projeto Android
-        run: npx cap add android
+      - name: Gerar build React
+        run: npm run build
+
+      - name: Sincronizar Capacitor
+        run: npx cap sync android
+
+      - name: Compilar APK
+        working-directory: android
+        run: |
+        chmod +x gradlew
+       ./gradlew assembleDebug
 
       - name: Sincronizar Capacitor
         run: npx cap sync android
